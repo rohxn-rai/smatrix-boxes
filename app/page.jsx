@@ -35,7 +35,7 @@ const Home = () => {
             newMatrix[pos.row][pos.col] = "orange";
             return newMatrix;
           });
-        }, 1000 * index);
+        }, 750 * index);
       });
     }
   }, [clickOrder]);
@@ -57,26 +57,28 @@ const Home = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen gap-16">
-      <div className="grid grid-cols-3 gap-4">
-        {matrix.map((row, rowIndex) =>
-          row.map((status, colIndex) => (
-            <div
-              key={`${rowIndex}-${colIndex}`}
-              onClick={() => handleClick(rowIndex, colIndex)}
-              className={`w-24 h-24 border flex justify-center items-center cursor-pointer transition-colors duration-300 ${getBgColor(
-                status
-              )}`}
-            ></div>
-          ))
-        )}
-      </div>
-      <div
-        className="flex flex-row gap-3 bg-lime-600 p-3 rounded-2xl border border-white/10"
-        onClick={resetStates}
-      >
-        <FaArrowRotateLeft className="text-3xl mt-1" />
-        <span className="text-4xl">Restart</span>
+    <div className="mx-auto pt-32 min-h-[750px]">
+      <div className="flex flex-col items-center gap-16">
+        <div className="grid grid-cols-3 gap-4">
+          {matrix.map((row, rowIndex) =>
+            row.map((status, colIndex) => (
+              <div
+                key={`${rowIndex}-${colIndex}`}
+                onClick={() => handleClick(rowIndex, colIndex)}
+                className={`w-24 h-24 border flex justify-center items-center cursor-pointer transition-colors duration-300 ${getBgColor(
+                  status
+                )}`}
+              ></div>
+            ))
+          )}
+        </div>
+        <div
+          className="flex flex-row gap-3 bg-lime-600 p-4 cursor-pointer rounded-2xl border border-white/10 hover:bg-primary hover:border-lime-600 transition-all duration-250"
+          onClick={resetStates}
+        >
+          <FaArrowRotateLeft className="text-3xl mt-1" />
+          <span className="text-4xl">Restart</span>
+        </div>
       </div>
     </div>
   );
