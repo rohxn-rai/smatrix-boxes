@@ -65,7 +65,7 @@ const Home = () => {
               <div
                 key={`${rowIndex}-${colIndex}`}
                 onClick={() => handleClick(rowIndex, colIndex)}
-                className={`w-24 h-24 border flex justify-center items-center cursor-pointer transition-colors duration-300 ${getBgColor(
+                className={`w-24 h-24 border border-white/10 flex justify-center items-center cursor-pointer transition-colors duration-300 ${getBgColor(
                   status
                 )}`}
               ></div>
