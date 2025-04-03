@@ -1,14 +1,10 @@
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
-
-import { FaGithub } from "react-icons/fa6";
 
 const Header = () => {
   return (
     <header className="py-8 xl:py-12 text-white">
       <div className="container mx-auto px-5 flex justify-between items-center">
-        {/* logo */}
         <div className="hidden md:flex md:flex-row gap-6">
           <Image src="/box.png" height={50} width={50} alt="Box Icon" />
           <h1 className="text-5xl pt-0.5">Click Box Game</h1>
