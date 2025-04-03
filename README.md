@@ -18,6 +18,10 @@ This is a assignment project provided by **Edxso** for the role of **Full Stack 
 
 ![updateclicks](/public/updateclicks.png)
 
+## Known Issues
+
+When the restart button is clicked during the Task - 3, the app is unable to recognize a stop for changing colours. This only happens if all the boxes have not turned to orange after the last box is clicked and the user clicks restart.
+
 ## Framework
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
