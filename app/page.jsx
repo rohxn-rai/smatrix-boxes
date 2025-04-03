@@ -1,35 +1,80 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { FaArrowRotateLeft } from "react-icons/fa6";
 
 const Home = () => {
-  const initialMatrix = Array.from({ length: 3 }, () => Array(3).fill(false));
+  const initialMatrix = Array.from({ length: 3 }, () =>
+    Array(3).fill("normal")
+  );
   const [matrix, setMatrix] = useState(initialMatrix);
+  const [clickOrder, setClickOrder] = useState([]);
 
   const handleClick = (row, col) => {
-    const newMatrix = matrix.map((r, i) =>
-      r.map((cell, j) => (i === row && j === col ? true : cell))
-    );
-    setMatrix(newMatrix);
+    if (matrix[row][col] === "normal") {
+      setMatrix((prev) => {
+        const newMatrix = prev.map((r, i) => {
+          if (i === row) {
+            return r.map((cell, j) => (j === col ? "green" : cell));
+          }
+          return r;
+        });
+        return newMatrix;
+      });
+      setClickOrder((prev) => [...prev, { row, col }]);
+    }
+  };
+
+  useEffect(() => {
+    if (clickOrder.length === 9) {
+      clickOrder.forEach((pos, index) => {
+        setTimeout(() => {
+          setMatrix((prevMatrix) => {
+            const newMatrix = prevMatrix.map((row) => [...row]);
+            newMatrix[pos.row][pos.col] = "orange";
+            return newMatrix;
+          });
+        }, 1000 * index);
+      });
+    }
+  }, [clickOrder]);
+
+  const getBgColor = (status) => {
+    switch (status) {
+      case "green":
+        return "bg-green-500";
+      case "orange":
+        return "bg-orange-500";
+      default:
+        return "bg-white";
+    }
+  };
+
+  const resetStates = () => {
+    setMatrix(initialMatrix);
+    setClickOrder([]);
   };
 
   return (
     <div className="flex flex-col justify-center items-center min-h-screen gap-16">
       <div className="grid grid-cols-3 gap-4">
         {matrix.map((row, rowIndex) =>
-          row.map((isGreen, colIndex) => (
+          row.map((status, colIndex) => (
             <div
               key={`${rowIndex}-${colIndex}`}
               onClick={() => handleClick(rowIndex, colIndex)}
-              className={`w-24 h-24 border flex justify-center items-center cursor-pointer transition-colors duration-300
-            ${isGreen ? "bg-green-500" : "bg-white"}`}
+              className={`w-24 h-24 border flex justify-center items-center cursor-pointer transition-colors duration-300 ${getBgColor(
+                status
+              )}`}
             ></div>
           ))
         )}
       </div>
-      <div className="flex flex-row gap-3">
+      <div
+        className="flex flex-row gap-3 bg-lime-600 p-3 rounded-2xl border border-white/10"
+        onClick={resetStates}
+      >
         <FaArrowRotateLeft className="text-3xl mt-1" />
         <span className="text-4xl">Restart</span>
       </div>
