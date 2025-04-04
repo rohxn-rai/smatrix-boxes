@@ -1,5 +1,3 @@
-This is a assignment project provided by **Edxso** for the role of **Full Stack Developer**. This project is made on **NextJS** Framework along with **Tailwind CSS** for styling.
-
 ### The App has 3 major tasks
 
 1. Creating a 3x3 Matrix.
