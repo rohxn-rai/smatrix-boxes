@@ -57,7 +57,7 @@ const Home = () => {
   };
 
   return (
-    <div className="mx-auto pt-32 min-h-[750px]">
+    <div className="mx-auto pt-16 min-h-[600px]">
       <div className="flex flex-col items-center gap-16">
         <div className="grid grid-cols-3 gap-4">
           {matrix.map((row, rowIndex) =>

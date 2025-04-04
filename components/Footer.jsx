@@ -5,7 +5,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa6";
 const Footer = () => {
   return (
     <footer>
-      <div className="container mx-auto px-5 pb-24 flex flex-col gap-6">
+      <div className="container mx-auto px-5 pb-6 flex flex-col gap-6">
         <h3 className="h3">Socials</h3>
         <div className="flex flex-row top-[90%] gap-12">
           <Link href="https://www.github.com/rohxn-rai">
